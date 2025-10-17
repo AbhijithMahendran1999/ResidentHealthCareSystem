@@ -5,10 +5,10 @@ import java.io.Serializable;
 public class PrescriptionItem implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private String medicine;
-    private String dose;
-    private String frequency; // e.g. "Once daily", "8AM and 8PM"
-    private String notes;
+    private String medicine;     // medicine name
+    private String dose;         // prescribed dose (e.g., "500mg")
+    private String frequency;    // timing/frequency (e.g., "Once daily", "8AM and 8PM")
+    private String notes;        // optional notes from the doctor
 
     public PrescriptionItem(String medicine, String dose, String frequency, String notes) {
         this.medicine = medicine;
@@ -17,6 +17,7 @@ public class PrescriptionItem implements Serializable {
         this.notes = notes;
     }
 
+    // ---------- Getters ----------
     public String getMedicine() { return medicine; }
     public String getDose() { return dose; }
     public String getFrequency() { return frequency; }

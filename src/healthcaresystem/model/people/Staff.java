@@ -2,6 +2,7 @@ package healthcaresystem.model.people;
 
 import java.io.Serializable;
 
+// Base class for all staff members (Doctor, Nurse, Manager)
 public abstract class Staff implements Serializable {
     private static final long serialVersionUID = 1L;
 

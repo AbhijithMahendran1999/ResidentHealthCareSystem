@@ -7,11 +7,11 @@ import healthcaresystem.model.people.Staff;
 public class AdministrationRecord implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private String prescriptionId;
-    private String medicine;
-    private String dose;
-    private LocalDateTime time;
-    private Staff administeredBy;
+    private String prescriptionId;   // linked prescription ID
+    private String medicine;         // medicine name
+    private String dose;             // dose administered
+    private LocalDateTime time;      // timestamp of administration
+    private Staff administeredBy;    // nurse or staff who administered it
 
     public AdministrationRecord(String prescriptionId, String medicine, String dose, Staff by) {
         this.prescriptionId = prescriptionId;
@@ -21,6 +21,7 @@ public class AdministrationRecord implements Serializable {
         this.administeredBy = by;
     }
 
+    // ---------- Getters ----------
     public String getPrescriptionId() { return prescriptionId; }
     public String getMedicine() { return medicine; }
     public String getDose() { return dose; }
