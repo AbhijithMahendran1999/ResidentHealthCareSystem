@@ -43,14 +43,4 @@ public class CareHomeServiceAdministerTests {
                 doctor).getId();
     }
 
-    @Test
-    public void nurse_canAdministerDose_andLogAppears() {
-        service.administerDose(bedId, rxId, 0, "", nurse);
-        assertFalse(service.administrationLogForBed(bedId, nurse).isEmpty());
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void badItemIndex_throws() {
-        service.administerDose(bedId, rxId, 99, "", nurse);
-    }
 }

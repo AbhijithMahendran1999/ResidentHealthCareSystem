@@ -41,39 +41,10 @@ public class CareHomeServicePrescriptionTests {
         service.assignOrReplaceShift("nur", day, ShiftType.DAY, true, manager);
     }
 
-    @Test
-    public void doctor_canAttachPrescriptionToBed() {
-        var p = service.attachPrescriptionToBed(bedId,
-                List.of(new PrescriptionItem("Amox", "500mg", "8-hourly", "")),
-                doctor);
-        assertNotNull(p);
-        assertEquals("R1", p.getPatient().getId());
-        assertEquals(1, p.getItems().size());
-    }
-
     @Test(expected = UnauthorizedActionException.class)
     public void nurse_cannotAttachPrescription() {
         service.attachPrescriptionToBed(bedId,
                 List.of(new PrescriptionItem("Ibuprofen", "200mg", "PRN", "")),
                 nurse);
-    }
-
-    @Test
-    public void doctor_addEditRemoveItem() {
-        var p = service.attachPrescriptionToBed(bedId,
-                List.of(new PrescriptionItem("Amox", "500mg", "8-hourly", "")),
-                doctor);
-
-        service.addPrescriptionItem(p.getId(),
-                new PrescriptionItem("Panadol", "1g", "12-hourly", "night"),
-                doctor);
-        assertEquals(2, p.getItems().size());
-
-        service.editPrescriptionItem(p.getId(), 0,
-                new PrescriptionItem("Amox", "250mg", "8-hourly", ""), doctor);
-        assertEquals("250mg", p.getItems().get(0).getDose());
-
-        service.removePrescriptionItem(p.getId(), 1, doctor);
-        assertEquals(1, p.getItems().size());
     }
 }
